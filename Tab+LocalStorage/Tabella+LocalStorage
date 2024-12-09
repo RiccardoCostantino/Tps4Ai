@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabella Anagrafica</title>
+    <style>
+        body {
+            font-family: "Times New Roman";
+            background-color: #107e02;
+        }
+        .output {
+            margin-top: 40px;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border: 2px double black;
+        }
+        th, td {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #22ff00;
+        }
+        button{
+            background-color:#bebebe;
+        }
+    </style>
+</head>
+<body>
+    <h1>DATI REGISTRATI</h1>
+    <table id="tabella">
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Sesso</th>
+            <th>Indirizzo</th>
+            <th>Città</th>
+            <th>CAP</th>
+            <th>Nazione</th>
+        </tr>
+    </table>
+
+        <button type="button" onclick="tornaIndietro()">Inserisci i Dati</button>
+        <button type="button" onclick="mostraDati()">Mostra dati</button>
+
+    <script>
+
+        let matrice = localStorage.getItem("datiRegistrazione")
+
+        function mostraDati(){
+            let array = matrice.split(",")
+            console.log(array);
+            const tabella = document.getElementById("tabella");
+
+            for(let j = 1; j < ((matrice.length-1)/7)+1; j++){
+                let nuovaRiga = "<tr>";
+
+                for (let i = 1; i < 7 ; i++) {
+                    nuovaRiga += "<td>"+array[i]+"</td>";
+                }
+
+                nuovaRiga += "</tr>";
+                tabella.innerHTML += nuovaRiga;
+            }
+        }
+      
+        function tornaIndietro() {
+            location.href="https://riccardocostantino.github.io./Tps4Ai/Tab+LocalStorage/TabellaAnagrafica.html";
+        }
+
+
+    </script>
+
+</body>
+</html>
