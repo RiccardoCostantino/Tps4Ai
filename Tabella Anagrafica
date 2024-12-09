@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Tabella Anagrafica</title>
     <style>
@@ -21,7 +21,7 @@
             text-align: left;
         }
         th {
-            background-color: #22ff00;
+            background-color: #1c9609;
         }
         button{
             background-color:#bebebe;
@@ -29,48 +29,93 @@
     </style>
 </head>
 <body>
-    <h1>DATI REGISTRATI</h1>
-    <table id="tabella">
-        <tr>
-            <th>Cognome</th>
-            <th>Nome</th>
-            <th>Sesso</th>
-            <th>Indirizzo</th>
-            <th>Città</th>
-            <th>CAP</th>
-            <th>Nazione</th>
-        </tr>
+
+    <h2>Inserimento Dati</h2>
+
+    <form id="datiForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" required><br><br>
+        
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" required><br><br>
+
+        <label for="sesso">Sesso:</label>
+        <input type="text" id="sesso" required><br><br>
+        
+        <label for="indirizzo">Indirizzo:</label>
+        <input type="text" id="indirizzo" required><br><br>
+        
+        <label for="citta">Città:</label>
+        <input type="text" id="citta" required><br><br>
+
+        <label for="cap">CAP:</label>
+        <input type="text" id="cap" required><br><br>
+
+        <label for="nazione">Nazione:</label>
+        <input type="text" id="nazione" required><br><br>
+        
+        <button type="button" onclick="aggiungiDati()">Aggiungi Dati</button>
+    </form>
+
+    <h2>Lista Dati Inseriti</h2>
+
+    <table id="tabellaDati">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Sesso</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>CAP</th>
+                <th>Nazione</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
     </table>
 
-        <button type="button" onclick="tornaIndietro()">Torna alla pagina precedente</button>
-        <button type="button" onclick="mostraDati()">Mostra dati</button>
-
     <script>
+        let dati = [];
+        
+        function aggiungiDati() {
+            let nome = document.getElementById('nome').value;
+            let cognome = document.getElementById('cognome').value;
+            let sesso = document.getElementById('sesso').value;
+            let indirizzo = document.getElementById('indirizzo').value;
+            let citta = document.getElementById('citta').value;
+            let cap = document.getElementById('cap').value;
+            let nazione = document.getElementById('nazione').value;
 
-        let matrice = localStorage.getItem("datiRegistrazione")
+            if (nome && cognome && sesso && indirizzo && citta && cap && nazione) {
+                dati.push([nome, cognome, sesso, indirizzo, citta, cap, nazione]);
 
-        function mostraDati(){
-            let array = matrice.split(",")
-            console.log(array);
-            const tabella = document.getElementById("tabella");
-
-            for(let j = 1; j < ((matrice.length-1)/7)+1; j++){
-                let nuovaRiga = "<tr>";
-
-                for (let i = 1; i < 7 ; i++) {
-                    nuovaRiga += "<td>"+array[i]+"</td>";
-                }
-
-                nuovaRiga += "</tr>";
-                tabella.innerHTML += nuovaRiga;
+                document.getElementById('nome').value = '';
+                document.getElementById('cognome').value = '';
+                document.getElementById('sesso').value = '';
+                document.getElementById('indirizzo').value = '';
+                document.getElementById('citta').value = '';
+                document.getElementById('cap').value = '';
+                document.getElementById('nazione').value = '';
+                aggiornaTabella();
+            } else {
+                alert("Tutti i campi devono essere riempiti!");
             }
         }
-      
-        function tornaIndietro() {
-            location.href="https://taccaswag.github.io/tps/tabella+localstorage/tabella.html";
+
+        function aggiornaTabella() {
+            let tabella = document.getElementById('tabellaDati');
+            let tbody = tabella.getElementsByTagName('tbody')[0];
+
+            tbody.innerHTML = '';
+            for (let i = 0; i < dati.length; i++) {
+                let riga = tbody.insertRow();
+                for (let j = 0; j < dati[i].length; j++) {
+                    let cella = riga.insertCell(j);
+                    cella.textContent = dati[i][j];
+                }
+            }
         }
-
-
     </script>
 
 </body>
