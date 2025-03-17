@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserimento Dati Utente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Inserisci Dati Utente</h1>
+
+<form id="userForm">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" required><br><br>
+
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" name="cognome" required><br><br>
+
+    <label for="eta">Età:</label>
+    <input type="number" id="eta" name="eta" required><br><br>
+
+    <label for="indirizzo">Indirizzo:</label>
+    <input type="text" id="indirizzo" name="indirizzo" required><br><br>
+
+    <button type="submit">Invia</button>
+</form>
+
+<script>
+    // Gestire l'invio del form
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Catturare i valori dei campi del form
+        const nome = document.getElementById("nome").value;
+        const cognome = document.getElementById("cognome").value;
+        const eta = document.getElementById("eta").value;
+        const indirizzo = document.getElementById("indirizzo").value;
+
+        // Creare un oggetto utente
+        const utente = {
+            nome: nome,
+            cognome: cognome,
+            eta: eta,
+            indirizzo: indirizzo
+        };
+
+        // Memorizzare l'oggetto come stringa nel localStorage
+        localStorage.setItem("utente", JSON.stringify(utente));
+
+        // Reindirizzare alla seconda pagina
+        window.location.href = "risultati.html";
+    });
+</script>
+
+</body>
+</html>
