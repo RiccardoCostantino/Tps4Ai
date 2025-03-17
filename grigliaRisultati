@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Utente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Dati Utente</h1>
+
+<!-- Griglia dove verranno visualizzati i dati -->
+<table id="userTable">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Età</th>
+            <th>Indirizzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- I dati saranno inseriti qui dinamicamente -->
+    </tbody>
+</table>
+
+<script>
+    // Prelevare i dati dal localStorage
+    const utente = JSON.parse(localStorage.getItem("utente"));
+
+    // Se i dati sono presenti, visualizzarli nella tabella
+    if (utente) {
+        const tableBody = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+        
+        // Creare una nuova riga della tabella
+        const newRow = tableBody.insertRow();
+
+        // Creare celle e popolarle con i dati dell'utente
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+        const cell4 = newRow.insertCell(3);
+
+        cell1.textContent = utente.nome;
+        cell2.textContent = utente.cognome;
+        cell3.textContent = utente.eta;
+        cell4.textContent = utente.indirizzo;
+    } else {
+        alert("Nessun dato utente trovato!");
+    }
+</script>
+
+</body>
+</html>
