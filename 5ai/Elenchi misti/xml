@@ -1,0 +1,12 @@
+<persone>
+    <persona>
+        <nome>Mario</nome>
+        <cognome>Rossi</cognome>
+        <eta>30</eta>
+    </persona>
+    <persona>
+        <nome>Luigi</nome>
+        <cognome>Verdi</cognome>
+        <eta>25</eta>
+    </persona>
+</persone>
