@@ -10,7 +10,7 @@
         //funzione per caricare il JSON
         function caricaDatiJ() {
             const richiesta = new XMLHttpRequest()
-            richiesta.open("GET", "https://belloniandrea.github.io/LavoriBelloni/5AI/ListaNera/ListaNera.json", true)
+            richiesta.open("GET", "https://riccardocostantino.github.io/Tps4Ai/5ai/Anagrafica/Anagrafica.json", true)
             richiesta.send()
 
             richiesta.onload = function () {
@@ -26,7 +26,7 @@
                 myFunction(this);//manda la richiesta come argomento
                 }
                 };
-                richiesta.open("GET", "https://belloniandrea.github.io/LavoriBelloni/5AI/ListaNera/ListaNera.xml", true);
+                richiesta.open("GET", "https://riccardocostantino.github.io/Tps4Ai/5ai/Anagrafica/Anagrafica.xml", true);
                 richiesta.send();
                 function myFunction(file) { //si occupa di fare qualcosa col file una volta caricato
                     filehttp = file.responseXML;
