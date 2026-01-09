@@ -39,7 +39,7 @@
     // Funzione per caricare il file JSON tramite XMLHttpRequest
     function caricaProdotti() {
       var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://riccardocostantino.github.io/Tps4Ai/5ai/recupero/recupero.JSON', true);
+      xhr.open('GET', "https://riccardocostantino.github.io/Tps4Ai/5ai/recupero/recupero.JSON", true);
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           var prodotti = JSON.parse(xhr.responseText);
