@@ -47,7 +47,7 @@ function caricaProdotti() {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var prodotti = JSON.parse(xhr.responseText);
-      var contenitore = document.getElementById("prodotti-list");
+      var contenitore = document.getElementById("prodotti");
       contenitore.innerHTML = "";
 
       prodotti.forEach(function (prodotto) {
