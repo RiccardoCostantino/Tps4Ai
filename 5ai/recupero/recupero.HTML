@@ -58,7 +58,7 @@ function caricaProdotti() {
 
         var ul = document.createElement("ul");
 
-        // 🔹 STAMPA DINAMICA: SOLO LE CARATTERISTICHE ESISTENTI
+        // stampa dinamica delle caratteristiche
         for (var key in prodotto.caratteristiche) {
           var li = document.createElement("li");
           li.textContent = key + ": " + prodotto.caratteristiche[key];
