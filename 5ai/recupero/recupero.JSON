@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "nome": "Smartphone Samsung Galaxy S21",
+    "categoria": "Smartphone",
+    "prezzo": 799.99,
+    "disponibilita": "Disponibile",
+    "caratteristiche": {
+      "display": "6.2 pollici",
+      "memoria": "128 GB",
+      "batteria": "4000 mAh",
+      "sistemaOperativo": "Android"
+    }
+  },
+  {
+    "id": 2,
+    "nome": "Cuffie Bose QuietComfort 35",
+    "categoria": "Cuffie",
+    "prezzo": 299.99,
+    "disponibilita": "Esaurito",
+    "caratteristiche": {
+      "tipo": "Over-ear",
+      "connessone": "Bluetooth",
+      "autonomia": "20 ore",
+      "funzionalita": "Noise Cancelling"
+    }
+  },
+  {
+    "id": 3,
+    "nome": "Laptop Apple MacBook Air",
+    "categoria": "Laptop",
+    "prezzo": 1199.99,
+    "disponibilita": "Disponibile",
+    "caratteristiche": {
+      "display": "13.3 pollici",
+      "memoria": "256 GB SSD",
+      "processore": "Apple M1",
+      "ram": "8 GB"
+    }
+  }
+]
