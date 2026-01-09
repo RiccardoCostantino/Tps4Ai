@@ -62,8 +62,8 @@
             <div class="caratteristiche">
               <h3>Caratteristiche:</h3>
               <ul>
-                <li><strong>Display:</strong> ${prodotto.caratteristiche.display}</li>
-                <li><strong>Memoria:</strong> ${prodotto.caratteristiche.memoria}</li>
+                <li><strong>Display:</strong> ${prodotto.caratteristiche.display || prodotto.caratteristiche.tipo} </li>
+                <li><strong>Memoria:</strong> ${prodotto.caratteristiche.memoria || prodotto.caratteristiche.connessione}</li>
                 <li><strong>Batteria:</strong> ${prodotto.caratteristiche.batteria || prodotto.caratteristiche.autonomia || prodotto.caratteristiche.processore}</li>
                 <li><strong>Sistema Operativo:</strong> ${prodotto.caratteristiche.sistemaOperativo || prodotto.caratteristiche.funzionalita}</li>
               </ul>
