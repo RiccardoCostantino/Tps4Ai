@@ -36,43 +36,53 @@
   <div id="prodotti"></div>
 
   <script>
-    // Funzione per caricare il file JSON tramite XMLHttpRequest
-    function caricaProdotti() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', "https://riccardocostantino.github.io/Tps4Ai/5ai/recupero/recupero.JSON", true);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          var prodotti = JSON.parse(xhr.responseText);
-          visualizzaProdotti(prodotti);
-        }
-      };
-      xhr.send();
-    }
+function caricaProdotti() {
+  var xhr = new XMLHttpRequest();
+  xhr.open(
+    "GET",
+    "https://raw.githubusercontent.com/TUO-USERNAME/TUO-REPO/main/prodotti.json",
+    true
+  );
 
-    // Funzione per visualizzare i prodotti dinamicamente in HTML
-    function visualizzaProdotti(prodotti) {
-      var container = document.getElementById('prodotti');
-      prodotti.forEach(function(prodotto) {
-        var prodottoHTML = `
-          <div class="prodotto">
-            <h2>${prodotto.nome}</h2>
-            <p><strong>Categoria:</strong> ${prodotto.categoria}</p>
-            <p class="prezzo"><strong>Prezzo:</strong> €${prodotto.prezzo.toFixed(2)}</p>
-            <p class="disponibilita"><strong>Disponibilità:</strong> ${prodotto.disponibilita}</p>
-            <div class="caratteristiche">
-              <h3>Caratteristiche:</h3>
-              <ul>
-                <li><strong>Display:</strong> ${prodotto.caratteristiche.display || prodotto.caratteristiche.tipo} </li>
-                <li><strong>Memoria:</strong> ${prodotto.caratteristiche.memoria || prodotto.caratteristiche.connessione}</li>
-                <li><strong>Batteria:</strong> ${prodotto.caratteristiche.batteria || prodotto.caratteristiche.autonomia || prodotto.caratteristiche.processore}</li>
-                <li><strong>Sistema Operativo:</strong> ${prodotto.caratteristiche.sistemaOperativo || prodotto.caratteristiche.funzionalita}</li>
-              </ul>
-            </div>
-          </div>
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var prodotti = JSON.parse(xhr.responseText);
+      var contenitore = document.getElementById("prodotti-list");
+      contenitore.innerHTML = "";
+
+      prodotti.forEach(function (prodotto) {
+        var div = document.createElement("div");
+        div.className = "product";
+
+        div.innerHTML = `<h3>${prodotto.nome}</h3>`;
+
+        var ul = document.createElement("ul");
+
+        // 🔹 STAMPA DINAMICA: SOLO LE CARATTERISTICHE ESISTENTI
+        for (var key in prodotto.caratteristiche) {
+          var li = document.createElement("li");
+          li.textContent = key + ": " + prodotto.caratteristiche[key];
+          ul.appendChild(li);
+        }
+
+        div.appendChild(ul);
+
+        div.innerHTML += `
+          <p><strong>Prezzo:</strong> €${prodotto.prezzo}</p>
+          <p><strong>Disponibilità:</strong> ${prodotto.disponibilita}</p>
         `;
-        container.innerHTML += prodottoHTML;
+
+        contenitore.appendChild(div);
       });
     }
+  };
+
+  xhr.send();
+}
+
+window.onload = caricaProdotti;
+</script>
+
 
     // Carica i prodotti quando la pagina è pronta
     window.onload = caricaProdotti;
