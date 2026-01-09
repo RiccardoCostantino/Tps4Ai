@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prodotti Elettronici</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .prodotto {
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    .prezzo {
+      color: green;
+      font-size: 1.2em;
+    }
+    .disponibilita {
+      color: red;
+    }
+    .caratteristiche {
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Elenco Prodotti Elettronici</h1>
+  <div id="prodotti"></div>
+
+  <script>
+    // Funzione per caricare il file JSON tramite XMLHttpRequest
+    function caricaProdotti() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'prodotti.json', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var prodotti = JSON.parse(xhr.responseText);
+          visualizzaProdotti(prodotti);
+        }
+      };
+      xhr.send();
+    }
+
+    // Funzione per visualizzare i prodotti dinamicamente in HTML
+    function visualizzaProdotti(prodotti) {
+      var container = document.getElementById('prodotti');
+      prodotti.forEach(function(prodotto) {
+        var prodottoHTML = `
+          <div class="prodotto">
+            <h2>${prodotto.nome}</h2>
+            <p><strong>Categoria:</strong> ${prodotto.categoria}</p>
+            <p class="prezzo"><strong>Prezzo:</strong> €${prodotto.prezzo.toFixed(2)}</p>
+            <p class="disponibilita"><strong>Disponibilità:</strong> ${prodotto.disponibilita}</p>
+            <div class="caratteristiche">
+              <h3>Caratteristiche:</h3>
+              <ul>
+                <li><strong>Display:</strong> ${prodotto.caratteristiche.display}</li>
+                <li><strong>Memoria:</strong> ${prodotto.caratteristiche.memoria}</li>
+                <li><strong>Batteria:</strong> ${prodotto.caratteristiche.batteria || prodotto.caratteristiche.autonomia || prodotto.caratteristiche.processore}</li>
+                <li><strong>Sistema Operativo:</strong> ${prodotto.caratteristiche.sistemaOperativo || prodotto.caratteristiche.funzionalita}</li>
+              </ul>
+            </div>
+          </div>
+        `;
+        container.innerHTML += prodottoHTML;
+      });
+    }
+
+    // Carica i prodotti quando la pagina è pronta
+    window.onload = caricaProdotti;
+  </script>
+</body>
+</html>
