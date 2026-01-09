@@ -14,6 +14,19 @@
   },
   {
     "id": 2,
+    "nome": "Iphone Apple 15 Pro",
+    "categoria": "Smartphone",
+    "prezzo": 1299.99,
+    "disponibilita": "Disponibile",
+    "caratteristiche": {
+      "display": "6.1 pollici",
+      "memoria": "128 GB",
+      "batteria": "3270 mAh",
+      "sistemaOperativo": "Ios"
+    }
+  },
+  {
+    "id": 3,
     "nome": "Cuffie Bose QuietComfort 35",
     "categoria": "Cuffie",
     "prezzo": 299.99,
@@ -26,7 +39,7 @@
     }
   },
   {
-    "id": 3,
+    "id": 4,
     "nome": "Laptop Apple MacBook Air",
     "categoria": "Laptop",
     "prezzo": 1199.99,
