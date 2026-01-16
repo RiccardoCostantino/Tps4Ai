@@ -68,8 +68,8 @@ function caricaProdotti() {
         div.appendChild(ul);
 
         div.innerHTML += `
-          <p><strong>Prezzo:</strong> €${prodotto.prezzo}</p>
-          <p><strong>Disponibilità:</strong> ${prodotto.disponibilita}</p>
+          <p class = "prezzo"><strong>Prezzo:</strong> €${prodotto.prezzo}</p>
+          <p class = "disponibilità"><strong>Disponibilità:</strong> ${prodotto.disponibilita}</p>
         `;
 
         contenitore.appendChild(div);
@@ -83,9 +83,5 @@ function caricaProdotti() {
 window.onload = caricaProdotti;
 </script>
 
-
-    // Carica i prodotti quando la pagina è pronta
-    window.onload = caricaProdotti;
-  </script>
 </body>
 </html>
